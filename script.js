@@ -9,7 +9,7 @@ $(document).ready(function () {
       // Something went wrong in initialization.
       console.log('Error while Initializing: ' + err.toString());
     });
-  });
+ 
 
 
 const D=[
@@ -191,3 +191,4 @@ document.querySelectorAll(".bu-chip").forEach(c=>{
     render();
   });
 });
+ });
