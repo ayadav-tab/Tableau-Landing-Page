@@ -1,0 +1,143 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0B1157;
+  --blue:#002BFF;
+  --opal:#FED7FF;
+  --cyan:#78DCFF;
+  --lgray:#F7F7F7;
+  --mgray:#C8C8C8;
+  --dgray:#545454;
+  --white:#ffffff;
+  --font:'Nunito Sans',sans-serif;
+  --r:8px;--rl:12px;
+}
+body{font-family:var(--font);background:var(--lgray);color:var(--navy)}
+
+.shell{max-width:920px;margin:0 auto;padding-bottom:3rem}
+
+.hero{background:var(--navy);padding:0;overflow:hidden;position:relative}
+.hero-inner{padding:2rem 2.25rem 0;display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.hero-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.hero-wordmark{font-size:13px;font-weight:700;letter-spacing:0.08em;color:rgba(255,255,255,0.5);text-transform:uppercase}
+.hero-divider{width:1px;height:14px;background:rgba(255,255,255,0.2)}
+.hero-tag{font-size:11px;color:var(--cyan);letter-spacing:0.05em;font-weight:600}
+.hero h1{font-size:28px;font-weight:700;color:var(--white);line-height:1.2;letter-spacing:-0.02em;margin-bottom:6px}
+.hero-sub{font-size:13px;color:rgba(255,255,255,0.5);font-weight:400}
+.hero-stats{display:flex;gap:0;align-items:stretch;padding-bottom:2rem}
+.hstat{text-align:center;padding:12px 20px;border-left:1px solid rgba(255,255,255,0.1)}
+.hstat:first-child{border-left:none}
+.hstat-n{font-size:24px;font-weight:700;color:var(--white);line-height:1}
+.hstat-l{font-size:10px;color:rgba(255,255,255,0.4);margin-top:3px;text-transform:uppercase;letter-spacing:0.05em}
+.hero-bar{height:3px;background:var(--navy);display:flex}
+.hero-bar-seg{height:100%}
+
+.controls{background:var(--white);border-bottom:1px solid rgba(0,0,0,0.07);padding:14px 2.25rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:20}
+.search-wrap{flex:1;min-width:200px;position:relative}
+.s-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--mgray);font-size:14px;pointer-events:none}
+.search-wrap input{width:100%;height:38px;border:1.5px solid var(--mgray);border-radius:var(--r);padding:0 12px 0 36px;font-family:var(--font);font-size:13.5px;color:var(--navy);background:var(--white);outline:none;transition:border-color .15s}
+.search-wrap input:focus{border-color:var(--blue)}
+.search-wrap input::placeholder{color:var(--mgray)}
+.ctrl-select{height:38px;border:1.5px solid var(--mgray);border-radius:var(--r);padding:0 12px;font-family:var(--font);font-size:13px;color:var(--navy);background:var(--white);outline:none;cursor:pointer;min-width:150px;transition:border-color .15s}
+.ctrl-select:focus{border-color:var(--blue)}
+.res-count{font-size:12px;color:var(--dgray);white-space:nowrap;font-weight:600;padding:0 4px}
+
+.bu-rail{background:var(--lgray);padding:12px 2.25rem;display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid rgba(0,0,0,0.06)}
+.bu-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:20px;border:1.5px solid transparent;font-size:12px;font-weight:600;color:var(--dgray);background:var(--white);cursor:pointer;transition:all .15s;user-select:none}
+.bu-chip:hover{border-color:var(--blue);color:var(--blue)}
+.bu-chip.active{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.bu-chip .cnt{font-size:10px;background:rgba(0,0,0,0.08);border-radius:10px;padding:1px 6px;font-variant-numeric:tabular-nums}
+.bu-chip.active .cnt{background:rgba(255,255,255,0.15)}
+
+.content{padding:1.75rem 2.25rem}
+
+.section{margin-bottom:2.25rem}
+.sec-hd{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.sec-bar{width:3px;border-radius:2px;height:18px;flex-shrink:0}
+.sec-title{font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--dgray)}
+.sec-line{flex:1;height:1px;background:rgba(0,0,0,0.07)}
+.sec-cnt{font-size:11px;color:var(--mgray);font-variant-numeric:tabular-nums;font-weight:600}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:10px}
+
+.dcard{display:block;text-decoration:none;background:var(--white);border:1.5px solid rgba(0,0,0,0.07);border-radius:var(--rl);padding:15px 16px 13px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
+.dcard-accent{position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--rl) var(--rl) 0 0}
+.dcard:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,43,255,0.1)}
+.dcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px;margin-top:4px}
+.dcard-name{font-size:13.5px;font-weight:600;color:var(--navy);line-height:1.35;flex:1}
+.dcard-arrow{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:rgba(0,43,255,0.07);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:11px;margin-top:1px;transition:all .15s}
+.dcard:hover .dcard-arrow{background:var(--blue);color:var(--white)}
+.dcard-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.src-tag{display:inline-flex;align-items:center;font-size:10.5px;font-weight:700;border-radius:4px;padding:2px 8px;letter-spacing:0.02em}
+
+.empty{text-align:center;padding:3.5rem 1rem}
+.empty-ring{width:56px;height:56px;border-radius:50%;border:2px solid var(--mgray);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--mgray);font-size:20px}
+.empty-t{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.empty-s{font-size:13px;color:var(--dgray)}
+</style>
+<script src="script.js"></script>
+ <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="tableau.extensions.1.latest.js"></script>
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">BreakthroughT1D Analytics Hub — centralized Tableau report discovery and navigation</h2>
+
+<div class="shell">
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-brand">
+          <div class="hero-wordmark">BreakthroughT1D</div>
+          <div class="hero-divider"></div>
+          <div class="hero-tag">Analytics Hub</div>
+        </div>
+        <h1>Report Discovery Center</h1>
+        <p class="hero-sub">Your single source of truth for organizational analytics</p>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-n" id="total-stat">57</div><div class="hstat-l">Dashboards</div></div>
+        <div class="hstat"><div class="hstat-n">6</div><div class="hstat-l">Business Units</div></div>
+        <div class="hstat"><div class="hstat-n">5</div><div class="hstat-l">Data Sources</div></div>
+      </div>
+    </div>
+    <div class="hero-bar">
+      <div class="hero-bar-seg" style="flex:16;background:#002BFF"></div>
+      <div class="hero-bar-seg" style="flex:9;background:#78DCFF"></div>
+      <div class="hero-bar-seg" style="flex:6;background:#FED7FF"></div>
+      <div class="hero-bar-seg" style="flex:3;background:rgba(255,255,255,0.15)"></div>
+      <div class="hero-bar-seg" style="flex:17;background:rgba(255,255,255,0.06)"></div>
+      <div class="hero-bar-seg" style="flex:6;background:rgba(120,220,255,0.4)"></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <span class="s-icon">⌕</span>
+      <input type="text" id="srch" placeholder="Search by name or data source..." autocomplete="off">
+    </div>
+    <select class="ctrl-select" id="src-sel">
+      <option value="">All sources</option>
+      <option value="sf">Salesforce</option>
+      <option value="ss">SmartSimple</option>
+      <option value="lo">LO</option>
+      <option value="wd">Workday</option>
+      <option value="social">Social channels</option>
+      <option value="ga">Google Analytics</option>
+    </select>
+    <div class="res-count" id="res-cnt">57 results</div>
+  </div>
+
+  <div class="bu-rail" id="bu-rail">
+    <div class="bu-chip active" data-bu="all">All <span class="cnt" id="cnt-all">57</span></div>
+    <div class="bu-chip" data-bu="Development &amp; Fundraising">Fundraising <span class="cnt">16</span></div>
+    <div class="bu-chip" data-bu="Events">Events <span class="cnt">8</span></div>
+    <div class="bu-chip" data-bu="Marketing">Marketing <span class="cnt">9</span></div>
+    <div class="bu-chip" data-bu="Chapter Operations">Chapter Ops <span class="cnt">3</span></div>
+    <div class="bu-chip" data-bu="Research (Global)">Research <span class="cnt">17</span></div>
+    <div class="bu-chip" data-bu="Community Engagement">Community <span class="cnt">6</span></div>
+  </div>
+
+  <div class="content" id="content"></div>
+</div>
+
+
