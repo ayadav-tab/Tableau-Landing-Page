@@ -191,7 +191,7 @@ document.querySelectorAll(".bu-chip").forEach(c=>{
     render();
   });
 });
-
+$('#btn').click(openModal);
 
 function openModal() {
 
