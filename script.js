@@ -191,4 +191,15 @@ document.querySelectorAll(".bu-chip").forEach(c=>{
     render();
   });
 });
+
+
+function openModal() {
+
+    
+    let url = `https://prod-useast-a.online.tableau.com/t/jdrf/views/WalkDashboardRe-DesignFinal_New/Snapshot/ff527c1e-428f-447f-8207-3ce759b4b584/787a0998-2714-47c3-b015-498637b15075`;
+
+    document.getElementById("vizFrame").src = url;
+
+    document.getElementById("modalOverlay").style.display = "block";
+}
  });

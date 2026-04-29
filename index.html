@@ -77,6 +77,42 @@ body{font-family:var(--font);background:var(--lgray);color:var(--navy)}
 .empty-ring{width:56px;height:56px;border-radius:50%;border:2px solid var(--mgray);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--mgray);font-size:20px}
 .empty-t{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
 .empty-s{font-size:13px;color:var(--dgray)}
+
+#modalOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+}
+
+#modalContent {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    background: white;
+    border-radius: 8px;
+}
+
+#vizFrame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#closeModal {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+}
 </style>
 
  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -138,8 +174,14 @@ body{font-family:var(--font);background:var(--lgray);color:var(--navy)}
     <div class="bu-chip" data-bu="Research (Global)">Research <span class="cnt">17</span></div>
     <div class="bu-chip" data-bu="Community Engagement">Community <span class="cnt">6</span></div>
   </div>
-
+<button onclick="openModal()">Open Popup</button>
   <div class="content" id="content"></div>
+  <div id="modalOverlay">
+    <div id="modalContent">
+        <span id="closeModal">&times;</span>
+        <iframe id="vizFrame"></iframe>
+    </div>
+</div>
 </div>
 
 
