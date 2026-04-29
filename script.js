@@ -192,13 +192,15 @@ document.querySelectorAll(".bu-chip").forEach(c=>{
   });
 });
 $('#btn').click(openModal);
-
+document.getElementById("closeModal").onclick = () => {
+    document.getElementById("modalOverlay").style.display = "none";
+};
 function openModal() {
 
     
     let url = `https://prod-useast-a.online.tableau.com/t/jdrf/views/WalkDashboardRe-DesignFinal_New/Snapshot/ff527c1e-428f-447f-8207-3ce759b4b584/787a0998-2714-47c3-b015-498637b15075`;
 
-    document.getElementById("vizFrame").src = url;
+    document.getElementById("vizFrame").innerHTML = "<tableau-viz id='tableau-viz' src='https://prod-useast-a.online.tableau.com/t/jdrf/views/WalkDashboardRe-DesignFinal_New/Snapshot/ff527c1e-428f-447f-8207-3ce759b4b584/787a0998-2714-47c3-b015-498637b15075' width='1800' height='1140' hide-tabs toolbar='bottom' ></tableau-viz>";
 
     document.getElementById("modalOverlay").style.display = "block";
 }
