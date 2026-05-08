@@ -234,9 +234,6 @@ $('#bu_count').text(bu_data.length);
 let html = `<div class="bu-chip active" data-bu="all">All <span class="cnt" id="cnt-all">${list_data.length}</span></div>`;
 
 bu_data.forEach(row => {
-
-    
-
     html += `
         <div class="bu-chip" data-bu="Development &amp; Fundraising">${row.Project} <span class="cnt">16</span></div>
     `;
