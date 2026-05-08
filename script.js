@@ -229,6 +229,7 @@ async function loadData() {
 function render_data(list_data,bu_data)
 {
    $('#total-stat')[0].innerHTML=list_data.data.length;
+   $('#bu_count').innerHTML=list_data.data.length;
 }
 
 })();
