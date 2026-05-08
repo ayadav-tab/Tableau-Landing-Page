@@ -1,13 +1,10 @@
 (function () {
 let list_worksheet;
 let bu_worksheet;
-$(document).ready(function () {
-
-
 let list_data;
 let bu_data;
-
-     tableau.extensions.initializeAsync().then(function () {
+$(document).ready(function () {
+ tableau.extensions.initializeAsync().then(function () {
       console.log('Connection Initialized');
       loadSelectedSheet();
     },function (err) {
