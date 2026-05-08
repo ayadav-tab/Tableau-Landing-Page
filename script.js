@@ -304,7 +304,7 @@ function tableauToJson(sumdata) {
         return obj;
     });
 }
-
+let cBU="all",cSrch="",cSrc="";
 function filtered(){
   return list_data.filter(d=>{
     const mBU=cBU==="all"||d.Project===cBU;
