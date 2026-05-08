@@ -1,7 +1,9 @@
-$(document).ready(function () {
-
+(function () {
 let list_worksheet;
 let bu_worksheet;
+$(document).ready(function () {
+
+
 let list_data;
 let bu_data;
 
@@ -218,3 +220,4 @@ document.querySelectorAll(".bu-chip").forEach(c=>{
 });
 
  });
+  });
