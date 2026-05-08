@@ -228,7 +228,7 @@ let bu_data;
 }
 function render_data(list_data,bu_data)
 {
-   $('#total-stat').innerHTML=list_data.length;
+   $('#total-stat').innerHTML=list_data.data.length;
 }
 
 })();
