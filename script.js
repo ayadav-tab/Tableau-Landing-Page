@@ -228,14 +228,23 @@ async function loadData() {
 }
 function render_data(list_data,bu_data)
 {
-   $('#total-stat')[0].innerHTML=list_data.data.length;
-   $('#bu_count')[0].innerHTML=bu_data.data.length;
-   html='';
-   bu_data.data.forEach(element => {
-    html+=`<div class="bu-chip" data-bu="Development &amp; Fundraising">${bu_data[element].Project} <span class="cnt">16</span></div>`
-    
-   });
-   $('#bu-rail').innerHTML=html;
+   $('#total-stat')[0].innerHTML = list_data.data.length;
+$('#bu_count')[0].innerHTML = bu_data.data.length;
+
+let html = '';
+
+bu_data.data.forEach(element => {
+
+    html += `
+        <div class="bu-chip" data-bu="${element[0].formattedValue}">
+            ${element[0].formattedValue}
+            <span class="cnt">16</span>
+        </div>
+    `;
+
+});
+
+$('#bu-rail')[0].innerHTML = html;
 }   
 
 })();
