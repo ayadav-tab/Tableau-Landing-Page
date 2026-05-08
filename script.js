@@ -229,6 +229,7 @@ async function loadData() {
 function render_data(list_data,bu_data)
 {
     $('#total-stat').text(list_data.length);
+    $('#res-cnt').text(list_data.length);
     $('#bu_count').text(bu_data.length);
 
     let html = `<div class="bu-chip active" data-bu="all">All <span class="cnt" id="cnt-all">${list_data.length}</span></div>`;
@@ -257,7 +258,31 @@ function render_data(list_data,bu_data)
 
     $('#src-sel').html(htmlsrc);
 } 
+function render_cards(list_data,bu_data)
+{
+  const filtereddata=filtered();
+  document.getElementById("res-cnt").textContent=filtereddata.length+" result"+(filtereddata.length!==1?"s":"");
+  const el=document.getElementById("content");
+  if(!filtereddata.length){
+    el.innerHTML=`<div class="empty"><div class="empty-ring">○</div><div class="empty-t">No dashboards found</div><div class="empty-s">Adjust your search or filter criteria</div></div>`;
+    return;
+  }
+  if(cBU!=="all"){
+    el.innerHTML=`<div class="grid">${filtereddata.map(card).join("")}</div>`;
+    return;
+  }
+  let h="";
+  const groups={};
+  filtereddata.forEach(d=>{if(!groups[d.Project])groups[d.bu_data]=[];groups[d.bu_data].push(d);});
+  bu_data.forEach(bu=>{
+    const items=groups[bu];
+    if(!items||!items.length) return;
+    const cfg=BU_CFG[bu]||{bar:"#002BFF"};
+    h+=`<div class="section"><div class="sec-hd"><div class="sec-bar" style="background:${bu.bar}"></div><div class="sec-title">${bu.Project}</div><div class="sec-line"></div><div class="sec-cnt">${items.length}</div></div><div class="grid">${items.map(card).join("")}</div></div>`;
+  });
+  el.innerHTML=h;
 
+}
 function tableauToJson(sumdata) {
 
     return sumdata.data.map(row => {
@@ -274,5 +299,26 @@ function tableauToJson(sumdata) {
         return obj;
     });
 }
+
+function filtered(){
+  return list_data.filter(d=>{
+    const mBU=cBU==="all"||d.Project===cBU;
+    const mSrch=!cSrch||d["Display Name"].toLowerCase().includes(cSrch)||d.src.toLowerCase().includes(cSrch);
+    const mSrc=!cSrc||srcFilterKey(d.Source)===cSrc;
+    return mBU&&mSrch&&mSrc;
+  });
+}
+function card(d){
+  const cfg=BU_CFG[d.Project]||{bar:"#002BFF"};
+  return `<a class="dcard" href="${d.Link}" target="_blank" rel="noopener">
+    <div class="dcard-accent" style="background:${cfg.bar}"></div>
+    <div class="dcard-top">
+      <div class="dcard-name">${d["Display Name"]}</div>
+      <div class="dcard-arrow">↗</div>
+    </div>
+    <div class="dcard-meta">${srcBadge(d.Link)}</div>
+  </a>`;
+}
+
 
 })();
