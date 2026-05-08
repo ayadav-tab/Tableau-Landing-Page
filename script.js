@@ -276,9 +276,7 @@ function render_cards(list_data,bu_data)
   const groups={};
   filtereddata.forEach(d=>{if(!groups[d.Project])groups[d.bu_data]=[];groups[d.bu_data].push(d);});
   bu_data.forEach(bu=>{
-    const items=groups[bu];
-    if(!items||!items.length) return;
-    const cfg=BU_CFG[bu]||{bar:"#002BFF"};
+    const items=bu;
     h+=`<div class="section"><div class="sec-hd"><div class="sec-bar" style="background:${bu.bar}">
           </div><div class="sec-title">${bu.Project}</div>
           <div class="sec-line"></div>
