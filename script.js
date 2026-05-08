@@ -285,7 +285,7 @@ function render_cards(list_data,bu_data)
           <div class="sec-cnt">${items.length}</div></div>
           <div class="grid">${items.map(card).join("")}</div></div>`;
   });
-  el.innerHTML=h;
+  document.getElementById("content").innerHTML=h;
 
 }
 function tableauToJson(sumdata) {
