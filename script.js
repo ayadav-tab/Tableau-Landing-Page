@@ -4,8 +4,9 @@ let bu_worksheet;
 let list_data;
 let bu_data;
 $(document).ready(function () {
+  alert('page Loaded');
  tableau.extensions.initializeAsync().then(function () {
-      console.log('Connection Initialized');
+      alert('Connection Initialized');
       loadSelectedSheet();
     },function (err) {
       // Something went wrong in initialization.
