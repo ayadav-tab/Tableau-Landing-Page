@@ -228,23 +228,40 @@ async function loadData() {
 }
 function render_data(list_data,bu_data)
 {
-   $('#total-stat')[0].innerHTML = list_data.data.length;
-$('#bu_count')[0].innerHTML = bu_data.data.length;
+   $('#total-stat').text(list_data.data.length);
+$('#bu_count').text(bu_data.data.length);
 
 let html = '';
 
-bu_data.data.forEach(element => {
+bu_data.data.forEach(row => {
+
+    const order = row[0]?.value;
+    const project = row[1]?.formattedValue;
+    const barColor = row[2]?.formattedValue;
+    const badgeColor = row[3]?.formattedValue;
+    const badgeBg = row[4]?.formattedValue;
+    const badgeText = row[5]?.formattedValue;
 
     html += `
-        <div class="bu-chip" data-bu="${element[0].formattedValue}">
-            ${element[0].formattedValue}
-            <span class="cnt">16</span>
+        <div class="bu-chip"
+             data-bu="${project}"
+             style="border-left:4px solid ${barColor};">
+
+            ${project}
+
+            <span class="cnt"
+                  style="
+                    background:${badgeBg};
+                    color:${badgeText};
+                  ">
+                ${order}
+            </span>
+
         </div>
     `;
-
 });
 
-$('#bu-rail')[0].innerHTML = html;
+$('#bu-rail').html(html);
 }   
 
 })();
