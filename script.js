@@ -231,7 +231,7 @@ function render_data(list_data,bu_data)
    $('#total-stat').text(list_data.data.length);
 $('#bu_count').text(bu_data.data.length);
 
-let html = '';
+let html = '<div class="bu-chip active" data-bu="all">All <span class="cnt" id="cnt-all">57</span></div>';
 
 bu_data.data.forEach(row => {
 
@@ -243,21 +243,7 @@ bu_data.data.forEach(row => {
     const badgeText = row[5]?.formattedValue;
 
     html += `
-        <div class="bu-chip"
-             data-bu="${project}"
-             style="border-left:4px solid ${barColor};">
-
-            ${project}
-
-            <span class="cnt"
-                  style="
-                    background:${badgeBg};
-                    color:${badgeText};
-                  ">
-                ${order}
-            </span>
-
-        </div>
+        <div class="bu-chip" data-bu="Development &amp; Fundraising">${project} <span class="cnt">16</span></div>
     `;
 });
 
