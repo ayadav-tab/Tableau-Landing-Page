@@ -277,7 +277,7 @@ function render_cards(list_data,bu_data)
   filtereddata.forEach(d=>{if(!groups[d.Project])groups[d.bu_data]=[];groups[d.bu_data].push(d);});
   bu_data.forEach(bu=>{
     const items=filtereddata.filter(x=>x.Project===bu.Project);
-    h+=`<div class="section"><div class="sec-hd"><div class="sec-bar" style="background:${bu.bar}">
+    h+=`<div class="section"><div class="sec-hd"><div class="sec-bar" style="background:${bu.Bar}">
           </div><div class="sec-title">${bu.Project}</div>
           <div class="sec-line"></div>
           <div class="sec-cnt">${items.length}</div></div>
@@ -313,8 +313,9 @@ function filtered(){
 }
 function card(d){
   const cfg=d.Project||{bar:"#002BFF"};
+  const bar =bu_list.filter(x=>x.Project===d.Project)[0].Bar;
   return `<a class="dcard" href="${d.Link}" target="_blank" rel="noopener">
-    <div class="dcard-accent" style="background:${d.Bar}"></div>
+    <div class="dcard-accent" style="background:${bar}"></div>
     <div class="dcard-top">
       <div class="dcard-name">${d["Display Name"]}</div>
       <div class="dcard-arrow">↗</div>
