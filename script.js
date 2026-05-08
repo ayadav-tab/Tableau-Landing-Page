@@ -257,7 +257,7 @@ function render_data(list_data,bu_data)
     });
 
     $('#src-sel').html(htmlsrc);
-    ender_cards(list_data,bu_data);
+    render_cards(list_data,bu_data);
 } 
 function render_cards(list_data,bu_data)
 {
