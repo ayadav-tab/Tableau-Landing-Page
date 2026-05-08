@@ -308,7 +308,7 @@ function filtered(){
   console.log(cSrch);
   return list_data.filter(d=>{
     const mBU=cBU==="all"||d.Project===cBU;
-    const mSrch=!cSrch||d["Display Name"].toLowerCase().includes(cSrch)||d.src.toLowerCase().includes(cSrch);
+    const mSrch=!cSrch||d["Display Name"].toLowerCase().includes(cSrch)||d.Source.toLowerCase().includes(cSrch);
     const mSrc=!cSrc||d.Source===cSrc;
     return mBU&&mSrch&&mSrc;
   });
