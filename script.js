@@ -217,9 +217,10 @@ let bu_data;
     bu_worksheet.getSummaryDataAsync().then(function (sumdata) {
         bu_data=sumdata;
         console.log(bu_data);
+        render_data(list_data,bu_data);
 
     });
-   render_data(list_data,bu_data);
+   
     
    
     //render();
