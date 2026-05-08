@@ -228,19 +228,34 @@ async function loadData() {
 }
 function render_data(list_data,bu_data)
 {
-   $('#total-stat').text(list_data.length);
-$('#bu_count').text(bu_data.length);
+    $('#total-stat').text(list_data.length);
+    $('#bu_count').text(bu_data.length);
 
-let html = `<div class="bu-chip active" data-bu="all">All <span class="cnt" id="cnt-all">${list_data.length}</span></div>`;
+    let html = `<div class="bu-chip active" data-bu="all">All <span class="cnt" id="cnt-all">${list_data.length}</span></div>`;
 
-bu_data.forEach(row => {
-  let bu_count = list_data.filter(x => x.Project === row.Project).length;
-    html += `
-        <div class="bu-chip" data-bu="Development &amp; Fundraising">${row.Project} <span class="cnt">${bu_count}</span></div>
-    `;
-});
+    bu_data.forEach(row => {
+      let bu_count = list_data.filter(x => x.Project === row.Project).length;
+        html += `
+            <div class="bu-chip" data-bu="Development &amp; Fundraising">${row.Project} <span class="cnt">${bu_count}</span></div>
+        `;
+    });
 
-$('#bu-rail').html(html);
+    $('#bu-rail').html(html);
+    const source = [
+    ...new Set(list_data.map(x => x.Source))
+    ];
+    let htmlsrc = '<option value="">All sources</option>';
+
+    source.forEach(project => {
+
+        htmlsrc += `
+            <option value="${project}">
+                ${project}
+            </option>
+        `;
+    });
+
+    $('#src-sel').html(htmlsrc);
 } 
 
 function tableauToJson(sumdata) {
