@@ -210,13 +210,13 @@ function loadSelectedSheet() {
 async function loadData() {
 
   await  list_worksheet.getSummaryDataAsync().then(function (sumdata) {
-        list_data=sumdata;
+        list_data=tableauToJson(sumdata);
          console.log(list_data);
         
 
     });
    await bu_worksheet.getSummaryDataAsync().then(function (sumdata) {
-        bu_data=sumdata;
+        bu_data=tableauToJson(sumdata);
         console.log(bu_data);
        
 
@@ -228,26 +228,38 @@ async function loadData() {
 }
 function render_data(list_data,bu_data)
 {
-   $('#total-stat').text(list_data.data.length);
-$('#bu_count').text(bu_data.data.length);
+   $('#total-stat').text(list_data.length);
+$('#bu_count').text(bu_data.length);
 
 let html = '<div class="bu-chip active" data-bu="all">All <span class="cnt" id="cnt-all">57</span></div>';
 
-bu_data.data.forEach(row => {
+bu_data.forEach(row => {
 
-    const order = row[0]?.value;
-    const project = row[1]?.formattedValue;
-    const barColor = row[2]?.formattedValue;
-    const badgeColor = row[3]?.formattedValue;
-    const badgeBg = row[4]?.formattedValue;
-    const badgeText = row[5]?.formattedValue;
+    
 
     html += `
-        <div class="bu-chip" data-bu="Development &amp; Fundraising">${project} <span class="cnt">16</span></div>
+        <div class="bu-chip" data-bu="Development &amp; Fundraising">${row.Project} <span class="cnt">16</span></div>
     `;
 });
 
 $('#bu-rail').html(html);
-}   
+} 
+
+function tableauToJson(sumdata) {
+
+    return sumdata.data.map(row => {
+
+        let obj = {};
+
+        sumdata.columns.forEach((col, index) => {
+
+            obj[col.fieldName] = row[index]?.value;
+            obj[col.fieldName + "_formatted"] = row[index]?.formattedValue;
+
+        });
+
+        return obj;
+    });
+}
 
 })();
