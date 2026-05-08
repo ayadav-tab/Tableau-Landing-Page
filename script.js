@@ -228,7 +228,7 @@ async function loadData() {
 }
 function render_data(list_data,bu_data)
 {
-   $('#total-stat').innerHTML=list_data.data.length;
+   $('#total-stat').text=list_data.data.length;
 }
 
 })();
