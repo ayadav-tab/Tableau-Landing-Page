@@ -193,8 +193,7 @@ document.querySelectorAll(".bu-chip").forEach(c=>{
 });
 
  });
-let list_data;
-let bu_data;
+
  
 function loadSelectedSheet() {
      debugger;
@@ -208,7 +207,8 @@ function loadSelectedSheet() {
     loadData();  // 👈 call your data function
 }
 function loadData() {
-
+let list_data;
+let bu_data;
     list_worksheet.getSummaryDataAsync().then(function (sumdata) {
         list_data=sumdata;
          console.log(list_data);
@@ -219,9 +219,14 @@ function loadData() {
         console.log(bu_data);
 
     });
-   
+   render_data(list_data,bu_data);
     
-    $('#total-stat').innerHTML=list_data.length;
+   
     //render();
 }
+function render_data(list_data,bu_data)
+{
+   $('#total-stat').innerHTML=list_data.length;
+}
+
 })();
