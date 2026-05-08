@@ -1,11 +1,12 @@
 (function () {
 let list_worksheet;
 let bu_worksheet;
-
+let list_data;
+let bu_data;
 $(document).ready(function () {
-  alert('page Loaded');
+ // alert('page Loaded');
  tableau.extensions.initializeAsync().then(function () {
-      alert('Connection Initialized');
+    //  alert('Connection Initialized');
       loadSelectedSheet();
     },function (err) {
       // Something went wrong in initialization.
@@ -206,22 +207,21 @@ function loadSelectedSheet() {
     
     loadData();  // 👈 call your data function
 }
-function loadData() {
-let list_data;
-let bu_data;
-    list_worksheet.getSummaryDataAsync().then(function (sumdata) {
+async function loadData() {
+
+  await  list_worksheet.getSummaryDataAsync().then(function (sumdata) {
         list_data=sumdata;
          console.log(list_data);
-          render_data(list_data,bu_data);
+        
 
     });
-    bu_worksheet.getSummaryDataAsync().then(function (sumdata) {
+   await bu_worksheet.getSummaryDataAsync().then(function (sumdata) {
         bu_data=sumdata;
         console.log(bu_data);
        
 
     });
-   
+     render_data(list_data,bu_data);
     
    
     //render();
