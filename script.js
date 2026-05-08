@@ -181,16 +181,6 @@ function render(){
   });
   el.innerHTML=h;
 }
-document.getElementById("srch").addEventListener("input",e=>{cSrch=e.target.value.trim().toLowerCase();render_cards();});
-document.getElementById("src-sel").addEventListener("change",e=>{cSrc=e.target.value;render_cards();});
-document.querySelectorAll(".bu-chip").forEach(c=>{
-  c.addEventListener("click",()=>{
-    document.querySelectorAll(".bu-chip").forEach(x=>x.classList.remove("active"));
-    c.classList.add("active");
-    cBU=c.dataset.bu;
-    render_cards();
-  });
-});
 
 
  });
@@ -284,6 +274,16 @@ function render_cards()
           <div class="grid">${items.map(card).join("")}</div></div>`;
   });
   document.getElementById("content").innerHTML=h;
+  document.getElementById("srch").addEventListener("input",e=>{cSrch=e.target.value.trim().toLowerCase();render_cards();});
+  document.getElementById("src-sel").addEventListener("change",e=>{cSrc=e.target.value;render_cards();});
+  document.querySelectorAll(".bu-chip").forEach(c=>{
+    c.addEventListener("click",()=>{
+      document.querySelectorAll(".bu-chip").forEach(x=>x.classList.remove("active"));
+      c.classList.add("active");
+      cBU=c.dataset.bu;
+      render_cards();
+    });
+  });
 
 }
 function tableauToJson(sumdata) {
