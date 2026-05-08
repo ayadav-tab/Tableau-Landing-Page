@@ -1,17 +1,42 @@
 $(document).ready(function () {
 
-
+let list_worksheet;
+let bu_worksheet;
+let list_data;
+let bu_data;
 
      tableau.extensions.initializeAsync().then(function () {
-        render();
-
+      loadSelectedSheet();
     },function (err) {
       // Something went wrong in initialization.
       console.log('Error while Initializing: ' + err.toString());
     });
  
+function loadSelectedSheet() {
+     
 
+    list_worksheet = tableau.extensions.dashboardContent.dashboard.worksheets
+        .find(ws => ws.name === 'list');
 
+    bu_worksheet = tableau.extensions.dashboardContent.dashboard.worksheets
+        .find(ws => ws.name === 'bu');
+    
+    loadData();  // 👈 call your data function
+}
+function loadData() {
+
+    list_worksheet.getSummaryDataAsync().then(function (sumdata) {
+        list_data=sumdata
+
+    });
+    bu_worksheet.getSummaryDataAsync().then(function (sumdata) {
+        bu_data=sumdata
+
+    });
+    console.log(list_worksheet);
+    console.log(bu_data);
+    //render();
+}
 const D=[
   {n:"Advocacy Dashboard",bu:"Community Engagement",src:"Salesforce",url:"https://prod-useast-a.online.tableau.com/#/site/jdrf/views/Advocacy/AdvocacyDashboard"},
   {n:"Chapter Health Report",bu:"Chapter Operations",src:"Salesforce & Workday",url:"https://prod-useast-a.online.tableau.com/#/site/jdrf/workbooks/2468986/views"},
@@ -137,7 +162,7 @@ const BU_ORDER=["Development & Fundraising","Events","Marketing","Chapter Operat
 let cBU="all",cSrch="",cSrc="";
 
 function filtered(){
-  return D.filter(d=>{
+  return list_data.filter(d=>{
     const mBU=cBU==="all"||d.bu===cBU;
     const mSrch=!cSrch||d.n.toLowerCase().includes(cSrch)||d.src.toLowerCase().includes(cSrch);
     const mSrc=!cSrc||srcFilterKey(d.src)===cSrc;
@@ -191,17 +216,5 @@ document.querySelectorAll(".bu-chip").forEach(c=>{
     render();
   });
 });
-$('#btn').click(openModal);
-document.getElementById("closeModal").onclick = () => {
-    document.getElementById("modalOverlay").style.display = "none";
-};
-function openModal() {
 
-    
-    let url = `https://prod-useast-a.online.tableau.com/t/jdrf/views/WalkDashboardRe-DesignFinal_New/Snapshot/ff527c1e-428f-447f-8207-3ce759b4b584/787a0998-2714-47c3-b015-498637b15075`;
-
-    document.getElementById("vizFrame").innerHTML = "<tableau-viz id='tableau-viz' src='https://prod-useast-a.online.tableau.com/t/jdrf/views/WalkDashboardRe-DesignFinal_New/Snapshot/ff527c1e-428f-447f-8207-3ce759b4b584/787a0998-2714-47c3-b015-498637b15075' width='1800' height='1140' hide-tabs toolbar='bottom' ></tableau-viz>";
-
-    document.getElementById("modalOverlay").style.display = "block";
-}
  });
