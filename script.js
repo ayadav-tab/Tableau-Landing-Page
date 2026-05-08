@@ -38,7 +38,7 @@ function loadData() {
     });
     console.log(list_worksheet);
     console.log(bu_data);
-    $('#total-stat').list_data.length;
+    $('#total-stat').innerHTML=list_data.length;
     //render();
 }
 const D=[
