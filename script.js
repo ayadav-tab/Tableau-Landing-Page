@@ -181,7 +181,23 @@ function render(){
   });
   el.innerHTML=h;
 }
-
+function on_search(e)
+{
+  cSrch=e.target.value.trim().toLowerCase();
+  render_cards();
+}
+function onsrc_change(e)
+{
+  cSrc=e.target.value;
+  render_cards();
+}
+function project_click(c)
+{
+    document.querySelectorAll(".bu-chip").forEach(x=>x.classList.remove("active"));
+      c.classList.add("active");
+      cBU=c.dataset.bu;
+      render_cards();
+}
 
  });
 
@@ -320,23 +336,7 @@ function srcBadge(s){
   
   return `<span class="src-tag" style="background:${s.Bg};color:${s.Txt}">${s.Label}</span>`;
 }
-function on_search(e)
-{
-  cSrch=e.target.value.trim().toLowerCase();
-  render_cards();
-}
-function onsrc_change(e)
-{
-  cSrc=e.target.value;
-  render_cards();
-}
-function project_click(c)
-{
-    document.querySelectorAll(".bu-chip").forEach(x=>x.classList.remove("active"));
-      c.classList.add("active");
-      cBU=c.dataset.bu;
-      render_cards();
-}
+
 
 
 
