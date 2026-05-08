@@ -313,7 +313,7 @@ function filtered(){
 }
 function card(d){
   const cfg=d.Project||{bar:"#002BFF"};
-  const bar =bu_list.filter(x=>x.Project===d.Project)[0].Bar;
+  const bar =bu_data.filter(x=>x.Project===d.Project)[0].Bar;
   return `<a class="dcard" href="${d.Link}" target="_blank" rel="noopener">
     <div class="dcard-accent" style="background:${bar}"></div>
     <div class="dcard-top">
