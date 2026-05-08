@@ -319,7 +319,7 @@ function card(d){
       <div class="dcard-name">${d["Display Name"]}</div>
       <div class="dcard-arrow">↗</div>
     </div>
-    <div class="dcard-meta">${srcBadge(d.Link)}</div>
+    <div class="dcard-meta">${srcBadge(d)}</div>
   </a>`;
 }
 function srcBadge(s){
