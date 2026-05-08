@@ -232,7 +232,7 @@ function render_data(list_data,bu_data)
    $('#bu_count')[0].innerHTML=bu_data.data.length;
    html='';
    bu_data.data.forEach(element => {
-    html+=`<div class="bu-chip" data-bu="Development &amp; Fundraising">${element.Project} <span class="cnt">16</span></div>`
+    html+=`<div class="bu-chip" data-bu="Development &amp; Fundraising">${bu_data[element].Project} <span class="cnt">16</span></div>`
     
    });
    $('#bu-rail').innerHTML=html;
