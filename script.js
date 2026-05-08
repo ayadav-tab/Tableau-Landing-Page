@@ -13,32 +13,6 @@ $(document).ready(function () {
       console.log('Error while Initializing: ' + err.toString());
     });
  
-function loadSelectedSheet() {
-     debugger;
-    console.log(tableau.extensions);
-    list_worksheet = tableau.extensions.dashboardContent.dashboard.worksheets
-        .find(ws => ws.name === 'list');
-
-    bu_worksheet = tableau.extensions.dashboardContent.dashboard.worksheets
-        .find(ws => ws.name === 'bu');
-    
-    loadData();  // 👈 call your data function
-}
-function loadData() {
-
-    list_worksheet.getSummaryDataAsync().then(function (sumdata) {
-        list_data=sumdata
-
-    });
-    bu_worksheet.getSummaryDataAsync().then(function (sumdata) {
-        bu_data=sumdata
-
-    });
-    console.log(list_worksheet);
-    console.log(bu_data);
-    $('#total-stat').innerHTML=list_data.length;
-    //render();
-}
 const D=[
   {n:"Advocacy Dashboard",bu:"Community Engagement",src:"Salesforce",url:"https://prod-useast-a.online.tableau.com/#/site/jdrf/views/Advocacy/AdvocacyDashboard"},
   {n:"Chapter Health Report",bu:"Chapter Operations",src:"Salesforce & Workday",url:"https://prod-useast-a.online.tableau.com/#/site/jdrf/workbooks/2468986/views"},
@@ -220,4 +194,32 @@ document.querySelectorAll(".bu-chip").forEach(c=>{
 });
 
  });
-});
+
+ 
+function loadSelectedSheet() {
+     debugger;
+    console.log(tableau.extensions);
+    list_worksheet = tableau.extensions.dashboardContent.dashboard.worksheets
+        .find(ws => ws.name === 'list');
+
+    bu_worksheet = tableau.extensions.dashboardContent.dashboard.worksheets
+        .find(ws => ws.name === 'bu');
+    
+    loadData();  // 👈 call your data function
+}
+function loadData() {
+
+    list_worksheet.getSummaryDataAsync().then(function (sumdata) {
+        list_data=sumdata
+
+    });
+    bu_worksheet.getSummaryDataAsync().then(function (sumdata) {
+        bu_data=sumdata
+
+    });
+    console.log(list_worksheet);
+    console.log(bu_data);
+    $('#total-stat').innerHTML=list_data.length;
+    //render();
+}
+})();
