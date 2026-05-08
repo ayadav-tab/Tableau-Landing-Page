@@ -257,6 +257,7 @@ function render_data(list_data,bu_data)
     });
 
     $('#src-sel').html(htmlsrc);
+    ender_cards(list_data,bu_data);
 } 
 function render_cards(list_data,bu_data)
 {
@@ -278,7 +279,11 @@ function render_cards(list_data,bu_data)
     const items=groups[bu];
     if(!items||!items.length) return;
     const cfg=BU_CFG[bu]||{bar:"#002BFF"};
-    h+=`<div class="section"><div class="sec-hd"><div class="sec-bar" style="background:${bu.bar}"></div><div class="sec-title">${bu.Project}</div><div class="sec-line"></div><div class="sec-cnt">${items.length}</div></div><div class="grid">${items.map(card).join("")}</div></div>`;
+    h+=`<div class="section"><div class="sec-hd"><div class="sec-bar" style="background:${bu.bar}">
+          </div><div class="sec-title">${bu.Project}</div>
+          <div class="sec-line"></div>
+          <div class="sec-cnt">${items.length}</div></div>
+          <div class="grid">${items.map(card).join("")}</div></div>`;
   });
   el.innerHTML=h;
 
