@@ -227,7 +227,7 @@ function render_data(list_data,bu_data)
     bu_data.forEach(row => {
       let bu_count = list_data.filter(x => x.Project === row.Project).length;
         html += `
-            <div class="bu-chip" data-bu="Development &amp; Fundraising">${row.Project} <span class="cnt">${bu_count}</span></div>
+            <div class="bu-chip" data-bu="${row.Project}">${row.Project} <span class="cnt">${bu_count}</span></div>
         `;
     });
 
