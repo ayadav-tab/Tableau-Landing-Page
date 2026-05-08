@@ -242,7 +242,7 @@ function render_data(list_data,bu_data)
 
     $('#bu-rail').html(html);
     const source = [
-    ...new Set(list_data.map(x => x.Source.split('&',0)))
+    ...new Set(list_data.map(x => TRIM(x.Source.split('&',0))))
     ];
     let htmlsrc = '<option value="">All sources</option>';
 
