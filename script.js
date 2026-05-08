@@ -210,15 +210,17 @@ function loadSelectedSheet() {
 function loadData() {
 
     list_worksheet.getSummaryDataAsync().then(function (sumdata) {
-        list_data=sumdata
+        list_data=sumdata;
+         console.log(list_data);
 
     });
     bu_worksheet.getSummaryDataAsync().then(function (sumdata) {
-        bu_data=sumdata
+        bu_data=sumdata;
+        console.log(bu_data);
 
     });
-    console.log(list_data);
-    console.log(bu_data);
+   
+    
     $('#total-stat').innerHTML=list_data.length;
     //render();
 }
