@@ -242,15 +242,15 @@ function render_data(list_data,bu_data)
 
     $('#bu-rail').html(html);
     const source = [
-    ...new Set(list_data.map(x => x.Source))
+    ...new Set(list_data.map(x => x.Source.split('&',0)))
     ];
     let htmlsrc = '<option value="">All sources</option>';
 
-    source.forEach(project => {
+    source.forEach(source => {
 
         htmlsrc += `
-            <option value="${project}">
-                ${project}
+            <option value="${source}">
+                ${source}
             </option>
         `;
     });
