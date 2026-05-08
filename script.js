@@ -8,6 +8,7 @@ let list_data;
 let bu_data;
 
      tableau.extensions.initializeAsync().then(function () {
+      console.log('Connection Initialized');
       loadSelectedSheet();
     },function (err) {
       // Something went wrong in initialization.
