@@ -16,7 +16,7 @@ let bu_data;
  
 function loadSelectedSheet() {
      
-
+    console.log(tableau.extensions);
     list_worksheet = tableau.extensions.dashboardContent.dashboard.worksheets
         .find(ws => ws.name === 'list');
 
