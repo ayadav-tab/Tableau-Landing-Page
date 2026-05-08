@@ -227,7 +227,7 @@ function render_data(list_data,bu_data)
     bu_data.forEach(row => {
       let bu_count = list_data.filter(x => x.Project === row.Project).length;
         html += `
-            <div class="bu-chip" data-bu="${row.Project}">${row.Project} <span class="cnt">${bu_count}</span></div>
+            <div class="bu-chip" onClick="project_click(this)" data-bu="${row.Project}">${row.Project} <span class="cnt">${bu_count}</span></div>
         `;
     });
 
@@ -274,16 +274,7 @@ function render_cards()
           <div class="grid">${items.map(card).join("")}</div></div>`;
   });
   document.getElementById("content").innerHTML=h;
-  document.getElementById("srch").addEventListener("input",e=>{cSrch=e.target.value.trim().toLowerCase();render_cards();});
-  document.getElementById("src-sel").addEventListener("change",e=>{cSrc=e.target.value;render_cards();});
-  document.querySelectorAll(".bu-chip").forEach(c=>{
-    c.addEventListener("click",()=>{
-      document.querySelectorAll(".bu-chip").forEach(x=>x.classList.remove("active"));
-      c.classList.add("active");
-      cBU=c.dataset.bu;
-      render_cards();
-    });
-  });
+  
 
 }
 function tableauToJson(sumdata) {
@@ -329,8 +320,33 @@ function srcBadge(s){
   
   return `<span class="src-tag" style="background:${s.Bg};color:${s.Txt}">${s.Label}</span>`;
 }
-
-
+function on_search(e)
+{
+  cSrch=e.target.value.trim().toLowerCase();
+  render_cards();
+}
+function onsrc_change(e)
+{
+  cSrc=e.target.value;
+  render_cards();
+}
+function project_click(c)
+{
+    document.querySelectorAll(".bu-chip").forEach(x=>x.classList.remove("active"));
+      c.classList.add("active");
+      cBU=c.dataset.bu;
+      render_cards();
+}
+document.getElementById("srch").addEventListener("input",e=>{cSrch=e.target.value.trim().toLowerCase();render_cards();});
+  document.getElementById("src-sel").addEventListener("change",e=>{cSrc=e.target.value;render_cards();});
+  document.querySelectorAll(".bu-chip").forEach(c=>{
+    c.addEventListener("click",()=>{
+      document.querySelectorAll(".bu-chip").forEach(x=>x.classList.remove("active"));
+      c.classList.add("active");
+      cBU=c.dataset.bu;
+      render_cards();
+    });
+  });
 
 
 })();
