@@ -217,7 +217,7 @@ function loadData() {
         bu_data=sumdata
 
     });
-    console.log(list_worksheet);
+    console.log(list_data);
     console.log(bu_data);
     $('#total-stat').innerHTML=list_data.length;
     //render();
