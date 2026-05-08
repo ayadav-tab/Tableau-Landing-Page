@@ -304,6 +304,8 @@ function tableauToJson(sumdata) {
 }
 let cBU="all",cSrch="",cSrc="";
 function filtered(){
+  console.log(cSrc);
+  console.log(cSrch);
   return list_data.filter(d=>{
     const mBU=cBU==="all"||d.Project===cBU;
     const mSrch=!cSrch||d["Display Name"].toLowerCase().includes(cSrch)||d.src.toLowerCase().includes(cSrch);
