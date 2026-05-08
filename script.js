@@ -231,7 +231,7 @@ function render_data(list_data,bu_data)
    $('#total-stat').text(list_data.length);
 $('#bu_count').text(bu_data.length);
 
-let html = '<div class="bu-chip active" data-bu="all">All <span class="cnt" id="cnt-all">57</span></div>';
+let html = `<div class="bu-chip active" data-bu="all">All <span class="cnt" id="cnt-all">${list_data.length}</span></div>`;
 
 bu_data.forEach(row => {
 
