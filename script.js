@@ -314,7 +314,7 @@ function filtered(){
 function card(d){
   const cfg=d.Project||{bar:"#002BFF"};
   return `<a class="dcard" href="${d.Link}" target="_blank" rel="noopener">
-    <div class="dcard-accent" style="background:${cfg.bar}"></div>
+    <div class="dcard-accent" style="background:${d.bar}"></div>
     <div class="dcard-top">
       <div class="dcard-name">${d["Display Name"]}</div>
       <div class="dcard-arrow">↗</div>
