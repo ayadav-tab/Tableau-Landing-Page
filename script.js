@@ -322,6 +322,9 @@ function card(d){
     <div class="dcard-meta">${srcBadge(d.Link)}</div>
   </a>`;
 }
-
+function srcBadge(s){
+  
+  return `<span class="src-tag" style="background:${s.Bg};color:${s.Txt}">${s.Label}</span>`;
+}
 
 })();
