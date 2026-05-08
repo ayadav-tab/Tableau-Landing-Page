@@ -235,7 +235,7 @@ function render_data(list_data,bu_data)
     html+=`<div class="bu-chip" data-bu="Development &amp; Fundraising">${element.Project} <span class="cnt">16</span></div>`
     
    });
-   $('bu-rail').innerHTML=html;
+   $('#bu-rail').innerHTML=html;
 }   
 
 })();
