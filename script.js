@@ -1,8 +1,7 @@
 (function () {
 let list_worksheet;
 let bu_worksheet;
-let list_data;
-let bu_data;
+
 $(document).ready(function () {
   alert('page Loaded');
  tableau.extensions.initializeAsync().then(function () {
@@ -194,7 +193,8 @@ document.querySelectorAll(".bu-chip").forEach(c=>{
 });
 
  });
-
+let list_data;
+let bu_data;
  
 function loadSelectedSheet() {
      debugger;
