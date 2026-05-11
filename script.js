@@ -274,7 +274,7 @@ function render_cards()
   }
   let h="";
   const filteredProjects = new Set(
-    filteredData.map(item => item.Project)
+    filtereddata.map(item => item.Project)
     );
 
 const result = BU_Data.filter(item =>
