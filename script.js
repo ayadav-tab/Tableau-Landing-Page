@@ -62,7 +62,7 @@
       ...new Set(list_data.map(x => x.Source?.split('&')[0].trim()).filter(x => x).sort(x => x.Source))
     ];
     let htmlsrc = '<option value="">All sources</option>';
-
+    $('#ds_count').text(source.length);
     source.forEach(source => {
 
       htmlsrc += `
