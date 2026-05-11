@@ -277,7 +277,7 @@ function render_cards()
     filtereddata.map(item => item.Project)
     );
 
-const result = BU_Data.filter(item =>
+const result = bu_data.filter(item =>
     filteredProjects.has(item.Project)
     );
   result.forEach(bu=>{
