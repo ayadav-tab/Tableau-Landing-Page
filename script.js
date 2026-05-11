@@ -273,9 +273,14 @@ function render_cards()
     return;
   }
   let h="";
-  const groups={};
-  filtereddata.forEach(d=>{if(!groups[d.Project])groups[d.bu_data]=[];groups[d.bu_data].push(d);});
-  bu_data.forEach(bu=>{
+  const filteredProjects = new Set(
+    filteredData.map(item => item.Project)
+    );
+
+const result = BU_Data.filter(item =>
+    filteredProjects.has(item.Project)
+    );
+  result.forEach(bu=>{
     const items=filtereddata.filter(x=>x.Project===bu.Project);
     h+=`<div class="section"><div class="sec-hd"><div class="sec-bar" style="background:${bu.Bar}">
           </div><div class="sec-title">${bu.Project}</div>
