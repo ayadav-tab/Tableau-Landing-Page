@@ -181,23 +181,6 @@ function render(){
   });
   el.innerHTML=h;
 }
-function on_search(e)
-{
-  cSrch=e.target.value.trim().toLowerCase();
-  render_cards();
-}
-function onsrc_change(e)
-{
-  cSrc=e.target.value;
-  render_cards();
-}
-function project_click(c)
-{
-    document.querySelectorAll(".bu-chip").forEach(x=>x.classList.remove("active"));
-      c.classList.add("active");
-      cBU=c.dataset.bu;
-      render_cards();
-}
 
  });
 
@@ -243,13 +226,13 @@ function render_data(list_data,bu_data)
     bu_data.forEach(row => {
       let bu_count = list_data.filter(x => x.Project === row.Project).length;
         html += `
-            <div class="bu-chip" onClick="project_click(this)" data-bu="${row.Project}">${row.Project} <span class="cnt">${bu_count}</span></div>
+            <div class="bu-chip" onClick="project_click(this)" data-bu="${row.Project}">${row.Project_Label} <span class="cnt">${bu_count}</span></div>
         `;
     });
 
     $('#bu-rail').html(html);
     const source = [
-    ...new Set(list_data.map(x => x.Source?.split('&')[0].trim()).filter(x => x))
+    ...new Set(list_data.map(x => x.Source?.split('&')[0].trim()).filter(x => x).sort(x=>x.Source))
     ];
     let htmlsrc = '<option value="">All sources</option>';
 
@@ -264,6 +247,17 @@ function render_data(list_data,bu_data)
 
     $('#src-sel').html(htmlsrc);
     render_cards();
+
+document.getElementById("srch").addEventListener("input",e=>{cSrch=e.target.value;render_cards();});
+document.getElementById("src-sel").addEventListener("change",e=>{cSrc=e.target.value;render_cards();});
+document.querySelectorAll(".bu-chip").forEach(c=>{
+  c.addEventListener("click",()=>{
+    document.querySelectorAll(".bu-chip").forEach(x=>x.classList.remove("active"));
+    c.classList.add("active");
+    cBU=c.dataset.bu;
+    render_cards();
+  });
+});
 } 
 function render_cards()
 {
