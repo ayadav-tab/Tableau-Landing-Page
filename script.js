@@ -49,8 +49,15 @@
     $('#bu_count').text(bu_data.length);
 
     let html = `<div class="bu-chip active" data-bu="all">All <span class="cnt" id="cnt-all">${list_data.length}</span></div>`;
+    
+    const filteredProjects_ = new Set(
+      list_data.map(item => item.Project)
+    );
 
-    bu_data.forEach(row => {
+    const result_ = bu_data.filter(item =>
+      filteredProjects_.has(item.Project)
+    );
+    result_.forEach(row => {
       let bu_count = list_data.filter(x => x.Project === row.Project).length;
       html += `
             <div class="bu-chip"  data-bu="${row.Project}">${row.Project_Label} <span class="cnt">${bu_count}</span></div>
